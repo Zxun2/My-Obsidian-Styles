@@ -1,0 +1,408 @@
+/* BULLET POINT RELATIONSHIP LINES */
+
+.cm-hmd-list-indent .cm-tab,
+li ul,
+li ol {
+  position: relative;
+}
+
+.cm-hmd-list-indent .cm-tab::before,
+li ul::before,
+li ol::before {
+  content: "";
+  border-left: 1px solid #eee;
+  position: absolute;
+}
+
+.cm-hmd-list-indent .cm-tab::before {
+  left: 0;
+  top: -5px;
+  bottom: -4px;
+}
+
+li ul::before,
+li ol::before {
+  left: -11px;
+  top: 0;
+  bottom: 0;
+}
+
+/* Tag Pills */
+.tag {
+  background-color: var(--text-accent);
+  border: none;
+  color: white;
+  font-size: 11px;
+  padding: 1px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0px 0px;
+  cursor: pointer;
+  border-radius: 14px;
+}
+.tag:hover {
+  color: white;
+  background-color: var(--text-accent-hover);
+}
+.tag[href^="#obsidian"] {
+  background-color: #8b77f0;
+}
+.tag[href^="#important"] {
+  background-color: rgb(252, 138, 138);
+}
+.tag[href^="#complete"] {
+  background-color: rgb(131, 248, 131);
+}
+.tag[href^="#inprogress"] {
+  background-color: rgb(255, 211, 129);
+}
+
+/* Cursor color in normal vim mode and opacity */
+.cm-fat-cursor .CodeMirror-cursor,
+.cm-animate-fat-cursor {
+  width: 0.5em;
+  background: #ffbb8e;
+  opacity: 60% !important;
+}
+
+/*an active line highlight in vim normal mode */
+.cm-fat-cursor .CodeMirror-activeline .CodeMirror-linebackground {
+  background-color: rgba(89, 75, 95, 0.99) !important;
+}
+
+/*if you want the highlight to present in both normal and insert mode of vim*/
+.CodeMirror-activeline .CodeMirror-linebackground {
+  background-color: rgba(89, 75, 95, 0.99) !important;
+}
+
+/* _hyphenation_and_justification      */
+/*-------------------------------------*/
+
+.cm-s-obsidian,
+.markdown-preview-view {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+/*  Enlarge image on hover */
+.markdown-preview-view img {
+  cursor: zoom-in;
+}
+
+.markdown-preview-view img:active {
+  cursor: zoom-out;
+  display: block;
+  z-index: 100;
+  position: fixed;
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+  margin: 0 auto;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background-primary);
+}
+
+/*============bigger link popup preview  ================*/
+.popover.hover-popover {
+  transform: scale(0.8); /* makes the content smaller */
+  max-height: 800px; /* was 300 */
+  min-height: 100px;
+  width: 500px; /* was 400 */
+}
+
+/* file and folder icons appear next to titles in the file explorer depending on the type */
+.nav-folder-children .nav-file-title-content:first-child::before {
+  content: "🗒 ";
+}
+.nav-folder-children .nav-folder-title-content::before {
+  content: "📂 ";
+}
+
+/* Customised symbolic hr line */
+.markdown-preview-view hr {
+  -webkit-margin-before: 4em;
+  margin-block-start: 4em;
+  -webkit-margin-after: 4em;
+  margin-block-end: 4em;
+  border: none;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    var(--background-primary),
+    var(--text-accent),
+    var(--background-primary)
+  );
+}
+
+.markdown-preview-view hr::after {
+  content: "§";
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(60deg);
+  transform-origin: 50% 50%;
+  padding: 0.5rem;
+  color: var(--text-sub-accent);
+  background-color: var(--background-primary);
+}
+
+/* File Explorer Columns */
+.nav-folder-children {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.nav-folder-children > .nav-folder {
+  flex: 0 0 100%;
+  padding: 0 1px;
+}
+.nav-folder-children > .nav-file {
+  flex: 0 1 200px;
+  padding: 0 1px;
+  display: flex;
+}
+/* Wrap long nav text and some paddings */
+.nav-file-title,
+.nav-folder-title {
+  white-space: normal !important;
+  width: auto !important;
+}
+/* Indent wrapped nav text */
+.nav-file-title-content {
+  margin-left: 0.5em !important;
+  text-indent: -0.5em !important;
+  word-break: break-word;
+}
+
+/*
+    Fade the pane header controls unless hovered (just to reduce/minimise distraction) 
+    does this per individual control to easily leave link and pin slightly more visible even if not hovered, and 
+    as an easy way to do a snazzy transition delay stagger in and out ;)    
+*/
+
+/* not hovered ie. on cursor exit from the header */
+.view-header:not(:hover) a.view-action[aria-label*="Preview"],
+.view-header:not(:hover) a.view-action[aria-label*="Edit"] {
+  opacity: 0.1;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 0ms;
+}
+
+.view-header:not(:hover) a.view-action[aria-label*="link"] {
+  opacity: 0.55;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 20ms;
+}
+
+.view-header:not(:hover) a.view-action[aria-label*="Pin"] {
+  opacity: 0.35;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 40ms;
+}
+
+.view-header:not(:hover) a.view-action[aria-label*="Close"] {
+  opacity: 0.1;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 60ms;
+}
+
+.view-header:not(:hover) a.view-action[aria-label*="More"] {
+  opacity: 0.1;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 80ms;
+}
+
+/*  hovered ie. on cursor entry to the header */
+.view-header:hover a.view-action[aria-label*="Preview"],
+.view-header:hover a.view-action[aria-label*="Edit"] {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 0ms;
+}
+
+.view-header:hover a.view-action[aria-label*="link"] {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 20ms;
+}
+
+.view-header:hover a.view-action[aria-label*="Pin"] {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 40ms;
+}
+
+.view-header:hover a.view-action[aria-label*="Close"] {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 60ms;
+}
+
+.view-header:hover a.view-action[aria-label*="More"] {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+  transition-delay: 80ms;
+}
+
+:root {
+  --font-size-normal: clamp(12px, 5vh, 20px);
+  --font-size-code: clamp(12px, 5vh, 18px);
+  --font-size-side-dock: clamp(12px, 5vh, 16px);
+  --font-size-side-dock-title: clamp(12px, 5vh, 18px);
+  --font-size-blockquote: clamp(16px, 5vh, 22px);
+  --font-size-status-bar: clamp(16px, 5vh, 16px);
+  --font-small: clamp(16px, 5vh, 18px);
+  --font-medium: clamp(16px, 5vh, 21px);
+}
+
+/* -------------- bigger link popup preview -------------- */
+.popover.hover-popover {
+  transform: scale(0.9);
+  max-height: 800px;
+  min-height: 300px;
+  width: 800px;
+  overflow: auto;
+  padding: 0rem 2rem 2rem 2rem;
+}
+
+.popover.hover-popover .markdown-embed {
+  height: 100%;
+}
+
+/* Stop footnotes affecting line height */
+sup {
+  vertical-align: top;
+  position: relative;
+  top: -0.3em;
+  font-size: 0.75em;
+}
+
+/*
+    clean-embeds-all.css snippet
+
+    Removes title, link, padding, margins from embeds,
+    so they really look like the same note.
+
+    This will not require a `cssclass` to be set but work for _all_ notes.
+    Derived from the `clean-embeds.css` snippet.
+
+    2021-06-04 Matthias C. Hormann (Moonbase59)
+
+    TODO: Find out how to correct PDF export. L/R margins & vspace too large on embeds.
+*/
+
+/* remove title */
+.markdown-preview-view .markdown-embed-title {
+  display: none;
+}
+
+/*
+  For links to embeds NOT to be shown, uncomment the following
+  and comment out the other section below.
+*/
+
+/*
+.markdown-preview-view .markdown-embed-link,
+.markdown-preview-view .file-embed-link {
+  display: none;
+}
+*/
+
+/*
+  For links to embeds to BE shown, uncomment the following
+  until the "End link show/hide stuff" comment
+  and comment out the section above.
+*/
+
+/* Link icon */
+.markdown-preview-view .markdown-embed-link,
+.markdown-preview-view .file-embed-link {
+  top: 0;
+  right: 0;
+  left: unset;
+  text-align: right;
+  border: none;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--text-faint);
+  cursor: pointer;
+}
+
+/* for Ars Magna theme and others that change ::before */
+.markdown-preview-view .markdown-embed-link::before,
+.markdown-preview-view .file-embed-link::before {
+  display: none;
+}
+
+/* Link icon size & hide */
+.markdown-preview-view .file-embed-link svg,
+.markdown-preview-view .markdown-embed-link svg {
+  height: 24px;
+  width: 24px;
+  opacity: 0;
+  display: unset;
+}
+
+/* show on hover */
+.markdown-preview-view .markdown-embed:hover .file-embed-link svg,
+.markdown-preview-view .markdown-embed:hover .markdown-embed-link svg {
+  opacity: 1;
+}
+
+/* change background on hover, to exactly see what’s embedded */
+.markdown-preview-view .markdown-embed:hover,
+.markdown-preview-view .file-embed:hover {
+  background-color: var(--background-secondary) !important;
+}
+
+/* End link show/hide stuff */
+
+/* remove border and scroll */
+/* unfortunately needs !important for some themes */
+.markdown-preview-view .markdown-embed,
+.markdown-preview-view .file-embed {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.markdown-preview-view .markdown-embed-content,
+.markdown-preview-view .markdown-embed-content > .markdown-preview-view {
+  max-height: unset;
+  padding: 0 !important; /* !important for "Pisum" theme */
+  margin: 0;
+  border: 0;
+}
+
+/* remove <br> between internal embeds */
+.markdown-preview-section div > p br,
+.markdown-preview-section div > br {
+  display: none;
+}
+
+/* remove vertical space added by markdown-preview-sizer */
+div.markdown-preview-sizer.markdown-preview-section {
+  min-height: unset !important;
+  padding-bottom: 0 !important;
+}
+
+/* special considerations for printing (PDF export) */
+@media print {
+  /* remove frontmatter box if "Show frontmatter" was enabled */
+  pre.frontmatter {
+    display: none;
+  }
+}
